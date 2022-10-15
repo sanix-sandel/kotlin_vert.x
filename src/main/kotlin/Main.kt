@@ -1,7 +1,10 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+import io.vertx.core.Vertx
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+fun main() {
+    val vertx= Vertx.vertx()
+    vertx.createHttpServer().requestHandler{
+        ctx ->ctx.response().end("OK")
+    }.listen(8081)
+
+    println("Open http://localhost:8081")
 }
